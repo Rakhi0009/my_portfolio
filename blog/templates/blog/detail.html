@@ -2,13 +2,13 @@
 <!doctype html>
 <html lang="en">
   <head>
-    {% load staticfiles %}
+      {% load staticfiles %}
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Jekyll v3.8.5">
-    <title>Rakhi Mehar</title>
+    <title>{{ blog.title }}</title>
 
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -41,43 +41,26 @@
               <div class="navbar-nav ml-auto">
                 <a class="nav-item nav-link " href="https://www.linkedin.com/in/rakhinegi/">Linkedin</a>
                 <a class="nav-item nav-link" href="{% static 'resume.pdf' %}">Resume</a>
-                <a class="nav-item nav-link" href="{% url 'allblogs' %}">Blog</a>
+                <a class="nav-item nav-link active" href="{% url 'allblogs' %}">Blog</a>
               </div>
             </div>
           </nav>
 </header>
 
 <main role="main">
+    <div class='container'>
 
-  <section class="jumbotron text-center">
-    <div class="container">
-      <h1 class="jumbotron-heading">Hi, I'm Rakhi.</h1>
-      <p class="lead text-muted">Programmer Analyst having one and half year of experience and looking for a job in web devlopment as a software developer. Check out my projects below.  </p>
-      <p>
-        <a href="mailto:rakhinegi1997@gmail.com" class="btn btn-primary my-2">Email Me</a>
-        
-      </p>
-      <image class="img-fluid" src="{% static 'IMG-rakhi.jpg' %}" height="200" width="200"/>
+    <h1 class="text-center pt-3">{{ blog.title }}</h1>
+    <p class= "text-center">{{ blog.pub_date }}</p>
+    <div class="text-center">
+    <img class="img-fluid" src="{{ blog.image.url }}" height=400 width=400 />
     </div>
-  </section>
+    <br />
+    <p>{{ blog.body}}</p>
 
-  <div class="album py-5 bg-light">
-    <div class="container">
-
-      <div class="row">
-        {% for job in jobs.all %}
-        <div class="col-md-4">
-          <div class="card mb-4 shadow-sm">
-            <img class="card-img-top" src ="{{ job.image.url }}" />
-            <div class="card-body">
-              <p class="card-text">{{ job.summary }}</p>
-            </div>
-          </div>
-        </div>
-        {% endfor %}
-      </div>
     </div>
-  </div>
+
+  
 
 </main>
 
